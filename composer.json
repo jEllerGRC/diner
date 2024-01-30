@@ -1,0 +1,15 @@
+{
+  "name" : "poweredbymonster/328/diner",
+  "description" : "My MVC Diner Application",
+  "authors" :
+  [
+    {
+      "name" : "Jared Eller",
+      "email" : "eller.jared@student.greenriver.edu"
+    }
+  ],
+  "require" :
+  {
+    "bcosca/fatfree-core" : "dev-master"
+  }
+}
