@@ -2,3 +2,13 @@ img
 {
     width: 100%;
 }
+
+a.btn-primary
+{
+    background-color: darkolivegreen;
+}
+
+h1
+{
+    color: darkolivegreen;
+}
