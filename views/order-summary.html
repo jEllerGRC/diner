@@ -11,12 +11,8 @@
 <body>
     <div class = "container">
         <h1>GRC Diner</h1>
-        <h2>Serving the GRC community since 1990</h2>
-        <p>We serve the greatest gumbo in the universe.</p>
-        <img src = "../images/diner.jpg" alt = "An image of a diner.">
-        <br>
-        <h4>View Menus</h4>
-        <a href = "breakfast">Breakfast</a>
+        <h2>Thank you for your order!</h2>
+        <p>You ordered {{@SESSION.food}} for {{@SESSION.meal}}</p>
         <a type = "button" class = "btn btn-primary" href = "order1">Place an order</a>
     </div>
 </body>
