@@ -17,13 +17,23 @@
     //Java translation: Base f3 = new Base();
 
     //Define a default route
-    $f3 -> route ("GET / ", function()
+    $f3 -> route ("GET /", function()
     { //anonymous function call as an argument for route
 //        echo "My Diner";
 
         //Display a view page
         $view = new Template();
         echo $view -> render ("views/home.html");
+    });
+
+    //Define a breakfast route
+    $f3 -> route ("GET /breakfast", function()
+    { //anonymous function call as an argument for route
+//            echo "breakfast";
+
+        //Display a view page
+        $view = new Template();
+        echo $view -> render ("views/breakfast-menu.html");
     });
 
     //Run F3
