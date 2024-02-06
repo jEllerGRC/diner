@@ -6,11 +6,12 @@
      */
 
     //Turn on error reporting
-    ini_set("display_errors", 1);
-    error_reporting(E_ALL);
+    ini_set ("display_errors", 1);
+    error_reporting (E_ALL);
 
     //Require the autoload file
-    require_once("vendor/autoload.php");
+    require_once ("vendor/autoload.php");
+    require_once ("model/data-layer.php");
 
     //Instantiate Fat-Free framework (F3)
     $f3 = Base::instance(); //static method call
@@ -57,7 +58,7 @@
         }
 
         //Add data to the f3 "hive"
-        $f3 -> set("meals", array("breakfast", "lunch", "dinner"));
+        $f3 -> set("meals", getMeals()); //make a method call to something stored in the data-layer file
 
         $view = new Template();
         echo $view->render('views/order-form-1.html');
@@ -82,6 +83,9 @@
             $f3->reroute("summary");
 
         }
+
+        //Add the data to the f3 hive
+        $f3 -> set ("condiments", getCondiments()); //make a method call to something stored in the data-layer file
 
         //Display a view page
         $view = new Template();

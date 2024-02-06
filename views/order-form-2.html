@@ -19,25 +19,16 @@
         <!-- get condiments -->
         <div class="form-group">
             <label class="col-sm-2 control-label">Select condiments</label>
+            <repeat group = "{{@condiments}}" value = "{{@condiment}}">
             <div class="col-sm-4">
                 <label><input type="checkbox"
-                              name="conds[]"
-                              value="ketchup"
-                > ketchup</label><br>
-                <label><input type="checkbox"
-                              name="conds[]"
-                              value="mustard"
-                > mustard</label><br>
-                <label><input type="checkbox"
-                              name="conds[]"
-                              value="mayo"
-                > mayo</label><br>
-                <label><input type="checkbox"
-                              name="conds[]"
-                              value="sriracha"
-                > sriracha</label><br>
-                <!-- Display an error if there is one -->
+                              name="{{@condiment}}"
+                              value="{{@condiment}}"
+                > {{ucwords(@condiment)}}</label><br>
             </div>
+            </repeat>
+
+                <!-- Display an error if there is one -->
         </div>
 
         <div class="col-xs-1 ">
