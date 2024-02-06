@@ -4,7 +4,10 @@
         <h1>GRC Diner</h1>
         <h2>Thank you for your order!</h2>
         <p>You ordered {{@SESSION.food}} for {{@SESSION.meal}}</p>
-        <a type = "button" class = "btn btn-primary" href = "order1">Place an order</a>
+        <p>Condiments: <repeat group = "{{@condiments}}" value = "{{@condiment}}">{{@condiment}}</repeat></p>
+
+        <a href="{{@BASE}}">Home page</a>
+        <a href="order1">Place another order</a>
     </div>
 </body>
 </html>
