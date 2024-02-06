@@ -39,7 +39,7 @@
     //Define the order form 1 route
     $f3 -> route ("GET|POST /order1", function($f3)
     { //anonymous function call as an argument for route
-        echo "Order Form Part I";
+//        echo "Order Form Part I";
 
         //if the form has been posted
         if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -55,6 +55,9 @@
             //redirect to order2 route
             $f3 -> reroute ("order2");
         }
+
+        //Add data to the f3 "hive"
+        $f3 -> set("meals", array("breakfast", "lunch", "dinner"));
 
         $view = new Template();
         echo $view->render('views/order-form-1.html');
