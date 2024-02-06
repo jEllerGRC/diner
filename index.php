@@ -54,16 +54,14 @@
 
             //redirect to order2 route
             $f3 -> reroute ("order2");
-
         }
 
-        //Display a view page
         $view = new Template();
-        echo $view -> render ("views/order-form-1.html");
+        echo $view->render('views/order-form-1.html');
     });
 
     //Define the order form 2 route
-    $f3 -> route ("GET|POST /order1", function($f3) { //anonymous function call as an argument for route
+    $f3 -> route ("GET|POST /order2", function($f3) { //anonymous function call as an argument for route
 //        echo "Order Form Part II";
 
         //if the form has been posted
