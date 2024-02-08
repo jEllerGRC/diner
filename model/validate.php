@@ -20,4 +20,9 @@ function validFood($food)
         return true;
     }
 }
+
+function validMeal($meal)
+{
+    return in_array($meal, getMeals()); //returns true if breakfast, lunch or dinner; returns false if anything else.
+}
 ?>

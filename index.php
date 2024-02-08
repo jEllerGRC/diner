@@ -45,6 +45,7 @@
 
         //Initialize variables to ensure proper scope
         $food = "";
+        $meal = "";
 
         //if the form has been posted
         if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -56,10 +57,17 @@
             }
             else
             {
-                $f3 -> set("errors['food']", "Invalid meal");
+                $f3 -> set("errors['food']", "Invalid food");
             }
 
-            $meal = $_POST["meal"];
+            if(isset($_POST["meal"]) and validMeal($_POST["meal"]))
+            {
+                $meal = $_POST["meal"];
+            }
+            else
+            {
+                $f3 -> set("errors['meal']", "Invalid meal choice");
+            }
 
             if (empty($f3 -> get("errors")))
             {

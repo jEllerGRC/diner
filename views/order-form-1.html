@@ -13,6 +13,9 @@
                 <input class="form-control" type="text" name="food" id="food" value="">
 
                 <!-- Display an error if there is one -->
+                <check if = "{{isset(errors['food']}}">
+                    <span class = "err">{{@errors['food']}} </span>
+                </check>
             </div>
         </div>
         <br>
@@ -34,9 +37,8 @@
                 </label><br>
                 </repeat>
 
-                <!-- Display an error if there is one -->
-                <check if = "{{isset(errors['food']}}">
-                    {{@errors['food']}}
+                <check if = "{{isset(errors['meal']}}">
+                    <span class = "err">{{@errors['meal']}} </span>
                 </check>
 
             </div>
