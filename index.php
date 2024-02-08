@@ -12,6 +12,7 @@
     //Require the autoload file
     require_once ("vendor/autoload.php");
     require_once ("model/data-layer.php");
+    require_once ("model/validate.php");
 
     //Instantiate Fat-Free framework (F3)
     $f3 = Base::instance(); //static method call
@@ -42,19 +43,34 @@
     { //anonymous function call as an argument for route
 //        echo "Order Form Part I";
 
+        //Initialize variables to ensure proper scope
+        $food = "";
+
         //if the form has been posted
         if($_SERVER["REQUEST_METHOD"] == "POST")
         {
             //validate the data
-            $food = $_POST["food"];
+            if(validFood($_POST["food"]))
+            {
+                $food = $_POST["food"];
+            }
+            else
+            {
+                $f3 -> set("errors['food']", "Invalid meal");
+            }
+
             $meal = $_POST["meal"];
 
-            //put the data in the session array
-            $f3 -> set ("SESSION.food", $food);
-            $f3 -> set ("SESSION.meal", $meal);
+            if (empty($f3 -> get("errors")))
+            {
+                //If there aren't any errors
+                //put the data in the session array
+                $f3 -> set ("SESSION.food", $food);
+                $f3 -> set ("SESSION.meal", $meal);
 
-            //redirect to order2 route
-            $f3 -> reroute ("order2");
+                //redirect to order2 route
+                $f3 -> reroute ("order2");
+            }
         }
 
         //Add data to the f3 "hive"
@@ -71,13 +87,11 @@
         //if the form has been posted
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
-            //validate the data
-            $food = $_POST["food"];
-            $meal = $_POST["meal"];
+            //validate the data CURRENTLY BROKEN
+            $condiments = $_POST["condiments"];
 
             //put the data in the session array
-            $f3->set("SESSION.food", $food);
-            $f3->set("SESSION.meal", $meal);
+            $f3->set("SESSION.condiments", $condiments);
 
             //redirect to summary route
             $f3->reroute("summary");
