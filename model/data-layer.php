@@ -3,13 +3,18 @@
  * 328/diner/model/data-layer.php
  */
 
-function getMeals()
+class DataLayer
 {
-    return array("breakfast", "lunch", "dinner");
-}
+    //these don't access any instance data, meaning they're static functions.
+    //the advantage of static functions is that you don't have to instantiate an instance of the DataLayer class.
+    static function getMeals()
+    {
+        return array("breakfast", "lunch", "dinner");
+    }
 
-function getCondiments()
-{
-    return array("ketchup", "mayo", "mustard", "sriracha");
+    static function getCondiments()
+    {
+        return array("ketchup", "mayo", "mustard", "sriracha");
+    }
 }
 ?>
