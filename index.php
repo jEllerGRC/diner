@@ -13,6 +13,11 @@
     require_once ("vendor/autoload.php");
     require_once ("model/data-layer.php");
     require_once ("model/validate.php");
+//    require_once ("classes/order.php");
+
+    //Test Order class
+//    $order = new order("pizza", "breakfast", "sriracha");
+//    var_dump($order);
 
     //Instantiate Fat-Free framework (F3)
     $f3 = Base::instance(); //static method call
@@ -71,10 +76,11 @@
 
             if (empty($f3 -> get("errors")))
             {
-                //If there aren't any errors
-                //put the data in the session array
-                $f3 -> set ("SESSION.food", $food);
-                $f3 -> set ("SESSION.meal", $meal);
+                //If there aren't any errors, instantiate an Order object.
+                $order = new Order($food, $meal);
+
+                //put the Object in the session array
+                $f3 -> set ("SESSION.order", $order);
 
                 //redirect to order2 route
                 $f3 -> reroute ("order2");
@@ -96,13 +102,21 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST")
         {
             //validate the data CURRENTLY BROKEN
-            $condiments = $_POST["condiments"];
+            if (isset($_POST["conds"]))
+            {
+                $conds = implode(", ", $_POST["conds"]);
+            }
+            else
+            {
+                $conds = "None selected";
+            }
 
             //put the data in the session array
-            $f3->set("SESSION.condiments", $condiments);
+            $f3 -> get("SESSION.order") -> setCondiments($conds);
+            var_dump($f3 -> get ("SESSION.order"));
 
             //redirect to summary route
-            $f3->reroute("summary");
+//            $f3->reroute("summary");
 
         }
 
