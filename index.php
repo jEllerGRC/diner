@@ -11,26 +11,29 @@
 
     //Require the autoload file
     require_once ("vendor/autoload.php");
-    require_once ("model/data-layer.php");
     require_once ("model/validate.php");
-//    require_once ("classes/order.php");
+    require_once ("controllers/controller.php");
 
     //Test Order class
 //    $order = new order("pizza", "breakfast", "sriracha");
 //    var_dump($order);
 
-    //Instantiate Fat-Free framework (F3)
+    //Test DataLayer class
+//    var_dump(DataLayer::getMeals());
+//    var_dump(DataLayer::getConds());
+
+
+
+
+//Instantiate Fat-Free framework (F3)
     $f3 = Base::instance(); //static method call
+    $con = new Controller($f3);
     //Java translation: Base f3 = new Base();
 
     //Define a default route
-    $f3 -> route ("GET /", function()
-    { //anonymous function call as an argument for route
-//        echo "My Diner";
-
-        //Display a view page
-        $view = new Template();
-        echo $view -> render ("views/home.html");
+    $f3 -> route ("GET /", function($con)
+    {
+        $con -> home();
     });
 
     //Define a breakfast route
@@ -88,7 +91,7 @@
         }
 
         //Add data to the f3 "hive"
-        $f3 -> set("meals", getMeals()); //make a method call to something stored in the data-layer file
+        $f3 -> set("meals", DataLayer::getMeals()); //make a method call to something stored in the data-layer file
 
         $view = new Template();
         echo $view->render('views/order-form-1.html');
